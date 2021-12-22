@@ -7,10 +7,12 @@ class pollElement extends HTMLElement {
     // Element interact with DOM
     this._$question = null;
     this._$answers = null;
+
+    this._$shadowRoot = this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
-    this.innerHTML = `
+    this.shadowRoot.innerHTML = `
     <style>
     #question{
         background-color: deepskyblue;
@@ -42,8 +44,8 @@ class pollElement extends HTMLElement {
     </container>    
     `;
 
-    this._$question = document.querySelector("#question");
-    this._$answers = document.querySelector("#answers");
+    this._$question = this.shadowRoot.querySelector("#question");
+    this._$answers = this.shadowRoot.querySelector("#answers");
     this._$answers.addEventListener("click", (event) => {
       this._$answers.querySelectorAll("li").forEach(($li) => {
         $li.classList.remove("selected");
