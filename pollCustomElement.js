@@ -11,6 +11,27 @@ class pollElement extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
+    <style>
+    #question{
+        background-color: deepskyblue;
+        color: white;
+        padding: 10px;
+        margin: 0px;
+    }  
+    #answers{
+        background-color: lightgray;
+        list-style: none;
+        margin: 0px;
+        padding-left: 0px;
+      }
+      #answers li{
+        padding: 10px;
+      }
+      #answers li:hover{
+        background-color: mediumseagreen;
+        color: white;
+      }
+    </style>
     <container id="poll-container">
     <h3 id="question"></h3>
     <ul id="answers"><ul>
