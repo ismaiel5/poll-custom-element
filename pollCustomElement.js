@@ -31,6 +31,10 @@ class pollElement extends HTMLElement {
         background-color: mediumseagreen;
         color: white;
       }
+      .selected{
+        background-color: green;
+        color: white;
+      }
     </style>
     <container id="poll-container">
     <h3 id="question"></h3>
@@ -40,7 +44,14 @@ class pollElement extends HTMLElement {
 
     this._$question = document.querySelector("#question");
     this._$answers = document.querySelector("#answers");
-
+    this._$answers.addEventListener("click", (event) => {
+      this._$answers.querySelectorAll("li").forEach(($li) => {
+        $li.classList.remove("selected");
+        if ($li === event.target) {
+          $li.classList.add("selected");
+        }
+      });
+    });
     this._render();
   }
 
