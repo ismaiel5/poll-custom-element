@@ -2,8 +2,8 @@ class pollElement extends HTMLElement {
   constructor() {
     super();
 
-    this._data = { question: "Do you want to confirm your choice?", answers: ["Yes, I am sure.", "No, I will reselect"] };
-    // let _data = null;
+    // this._data = { question: "Do you want to confirm your choice?", answers: ["Yes, I am sure.", "No, I will reselect"] };
+    this._data = null;
     // Element interact with DOM
     this._$question = null;
     this._$answers = null;
@@ -66,6 +66,15 @@ class pollElement extends HTMLElement {
         this._$answers.appendChild($li);
       });
     }
+  }
+
+  set data(data) {
+    if (this._data === data) return;
+    this._data = data;
+    this._render();
+  }
+  get data() {
+    return this._data;
   }
 }
 window.customElements.define("poll-element", pollElement);
